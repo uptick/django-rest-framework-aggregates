@@ -1,12 +1,12 @@
 # django-rest-framework-aggregates
-[![PyPI version](https://badge.fury.io/py/drf_aggregates.svg)](https://badge.fury.io/py/drf_aggregates)
+[![PyPI version](https://badge.fury.io/py/drf-aggregates.svg)](https://badge.fury.io/py/drf-aggregates)
 
 Exposes aggregation features of the Django model queryset to the DRF API.
 
 ## Requirements
 
- - Python 3.6+ 
- - Django 1.11+ 
+ - Python 3.6+
+ - Django 1.11+
  - Django Rest Framework 3.5.3+
 
 ## Overview
@@ -24,7 +24,7 @@ Supports `GET` calls to list endpoints in the format:
 Supports date part extraction for aggregation:
 
     endpoint.agg/?group_by[created__year]&aggregate[Count]=id
-    
+
 Supports choices to representation extract:
 
     endpoint.agg/?group_by[choiceField]&aggregate[Count]=id

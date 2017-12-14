@@ -20,6 +20,8 @@ try:
         classifiers=[
             'Development Status :: 2 - Pre-Alpha',
             'Environment :: Web Environment',
+            'Framework :: Django',
+            'Framework :: Django :: 1.11',
             'Intended Audience :: Developers',
             'License :: OSI Approved :: BSD License',
             'Operating System :: OS Independent',
@@ -27,10 +29,7 @@ try:
             'Programming Language :: Python :: 3.6',
             'Topic :: Office/Business',
         ],
-        install_requires=[
-            'django>=1.11.0',
-            'djangorestframework>=3.5.3',
-        ],
+        install_requires=[],
     )
 except NameError:
     raise RuntimeError("Unable to determine version.")
