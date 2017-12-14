@@ -1,5 +1,5 @@
 # django-rest-framework-aggregates
-[![PyPI version](https://badge.fury.io/py/drf-aggregates.svg)](https://badge.fury.io/py/drf-aggregates)
+[![PyPI version](https://badge.fury.io/py/drf_aggregates.svg)](https://badge.fury.io/py/drf_aggregates)
 
 Exposes aggregation features of the Django model queryset to the DRF API.
 
