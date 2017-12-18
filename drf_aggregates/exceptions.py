@@ -10,5 +10,5 @@ class AggregateException(APIException):
 
 
 class QueryException(AggregateException):
-    status_code = 403
+    status_code = 400
     default_detail = 'Incorrect query parameters.'
