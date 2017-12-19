@@ -41,7 +41,7 @@ Custom aggregate functions set on the queryset should return a dictionary of fie
 
 ## Examples
 
-Example setup can be found in the [example/](..blob/master/example/) folder.
+Example setup can be found in the [example/](/example/) folder.
 
 To enable the renderer, update your Django settings file:
 
@@ -55,7 +55,7 @@ To enable the renderer, update your Django settings file:
     }
   ```
 
-In the [Cars ViewSet](..blob/master/example/api/views.py) we are outputting the result to json:
+In the [Cars ViewSet](/example/api/views.py) we are outputting the result to json:
 
   ```python
 
