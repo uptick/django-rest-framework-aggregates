@@ -2,6 +2,9 @@ language: python
 sudo: required
 python: 3.6
 
+env:
+  - DJANGO_SETTINGS_MODULE=example.settings.test
+
 install:
   - pip3 install -r requirements-dev.txt
 
