@@ -4,7 +4,7 @@ __all__ = ['AggregateException', 'QueryException']
 
 
 class AggregateException(APIException):
-    status_code = 400
+    status_code = 422
     default_detail = 'An error has occured in the aggregate API.'
     default_code = 'aggregate_error'
 
