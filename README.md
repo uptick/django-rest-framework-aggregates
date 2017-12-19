@@ -41,4 +41,43 @@ Custom aggregate functions set on the queryset should return a dictionary of fie
 
 ## Examples
 
-[TODO]
+Example setup can be found in the [example/](..blob/master/example/) folder.
+
+To enable the renderer, update your Django settings file:
+
+  ```python
+    REST_FRAMEWORK = {
+        'DEFAULT_RENDERER_CLASSES': (
+            'drf_aggregates.renderers.AggregateRenderer',
+            ...
+        ),
+        ...
+    }
+  ```
+
+In the [Cars ViewSet](..blob/master/example/api/views.py) we are outputting the result to json:
+
+  ```python
+
+      def list(self, request, *args, **kwargs):
+          queryset = self.filter_queryset(self.get_queryset())
+          data = request.accepted_renderer.render({'queryset': queryset, 'request': request})
+          return Response(data, content_type=f'application/json')
+  ```
+
+
+## Tests
+
+In order to run tests locally:
+
+1. Install development requirements:
+
+    `pip3 install -r requirements-dev.txt`
+
+2. Update your environment to point to test Django settings file:
+
+    `export DJANGO_SETTINGS_MODULE=example.settings.test`
+
+3. Run tests:
+
+    `py.test`

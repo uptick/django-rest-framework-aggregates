@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.cache
 
 # C extensions
 *.so
@@ -16,3 +17,7 @@ dist/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+
+# Dev database
+example_db
+example_db-journal

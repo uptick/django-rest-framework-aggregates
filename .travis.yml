@@ -1,0 +1,13 @@
+language: python
+sudo: required
+python: 3.6
+
+install:
+  - pip3 install -r requirements-dev.txt
+
+script:
+  - py.test
+
+branches:
+  only:
+    - master
