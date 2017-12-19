@@ -1,5 +1,5 @@
 # django-rest-framework-aggregates
-[![PyPI version](https://badge.fury.io/py/drf-aggregates.svg)](https://badge.fury.io/py/drf-aggregates)
+[![PyPI version](https://badge.fury.io/py/drf-aggregates.svg)](https://badge.fury.io/py/drf-aggregates) [![Build Status](https://travis-ci.org/ABASystems/django-rest-framework-aggregates.svg?branch=master)](https://travis-ci.org/ABASystems/django-rest-framework-aggregates)
 
 Exposes aggregation features of the Django model queryset to the DRF API.
 
@@ -41,7 +41,7 @@ Custom aggregate functions set on the queryset should return a dictionary of fie
 
 ## Examples
 
-Example setup can be found in the [example/](..blob/master/example/) folder.
+Example setup can be found in the [example/](/example/) folder.
 
 To enable the renderer, update your Django settings file:
 
@@ -55,7 +55,7 @@ To enable the renderer, update your Django settings file:
     }
   ```
 
-In the [Cars ViewSet](..blob/master/example/api/views.py) we are outputting the result to json:
+In the [Cars ViewSet](/example/api/views.py) we are outputting the result to json:
 
   ```python
 
