@@ -6,9 +6,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.functional import cached_property
 
+from example.managers import CarManager
+
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=50)
+    country = models.CharField(max_length=3)
 
     def __str__(self):
         return self.name
@@ -30,6 +33,8 @@ class Car(models.Model):
     classification = models.CharField(choices=CLASSIFICATION, max_length=10, blank=True)
     retail_price = models.DecimalField(max_digits=11, decimal_places=4, default=0)
     is_bullet_proof = models.BooleanField(default=False)
+
+    objects = CarManager()
 
     @cached_property
     def classification_display(self):

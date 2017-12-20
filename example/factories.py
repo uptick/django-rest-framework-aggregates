@@ -12,6 +12,7 @@ class ManufacturerFactory(factory.django.DjangoModelFactory):
         model = Manufacturer
 
     name = Faker('company_suffix')
+    country = Faker('country_code')
 
 
 class CarFactory(factory.django.DjangoModelFactory):

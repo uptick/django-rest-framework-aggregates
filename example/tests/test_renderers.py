@@ -63,3 +63,20 @@ class AggregatesAPITestCase(BaseTestCase):
                 dict(Car.CLASSIFICATION).get(row['classification'])
             )
 
+    def test_annotated_fields(self):
+        # country is an annotated field that retrieves the manufacturer's country
+        results = self.query_agg_api(
+            self.car_api_url,
+            'group_by[country]',
+            'aggregate[Count]=id',
+        )
+
+        # check that the group by count worked
+        for row in results:
+            count_cars = len([
+                car for car in self.cars
+                if car.manufacturer.country == row['country']
+            ])
+            self.assertEqual(count_cars, row['count_id'])
+
+

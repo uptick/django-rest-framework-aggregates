@@ -4,6 +4,7 @@ from rest_framework import renderers
 from rest_framework.utils import encoders
 
 from django.db.models import Case, CharField, Value, When
+from django.db.models.fields import FieldDoesNotExist
 from django.db.models.aggregates import Aggregate, Avg, Count, Max, Min, StdDev, Sum, Variance
 from django.db.models.functions import Extract
 
@@ -146,7 +147,10 @@ class AggregateRenderer(renderers.BaseRenderer):
         field_name = field
 
         # get the django model field definition
-        model_field = qs.model._meta.get_field(field.split('__')[0] if '__' in field else field)
+        try:
+            model_field = qs.model._meta.get_field(field.split('__')[0] if '__' in field else field)
+        except FieldDoesNotExist:
+            return qs, field_name
 
         # choices should aslo return the human readable string
         if hasattr(model_field, 'choices') and model_field.choices:
