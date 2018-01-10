@@ -36,7 +36,7 @@ class AggregateRenderer(renderers.BaseRenderer):
     '''
     Main renderer for the aggregate functions
     '''
-    media_type = 'application/json'
+    media_type = 'application/vnd.api+json'
     format = 'agg'
 
     def _clean_agg_query_params(self, query_params, keyword):
