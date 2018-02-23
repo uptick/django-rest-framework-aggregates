@@ -15,7 +15,7 @@ try:
         license='BSD',
         author='Fiona Lawrence, Jonathan Loo',
         author_email='support@uptickhq.com',
-        url='https://github.com/ABASystems/django-rest-framework-aggregates',
+        url='https://github.com/uptick/django-rest-framework-aggregates',
         keywords=['drf', 'django-rest-framework', 'aggregates'],
         classifiers=[
             'Development Status :: 2 - Pre-Alpha',
