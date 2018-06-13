@@ -1,15 +1,14 @@
 import json
 
+from django.db.models import Case, CharField, Value, When
+from django.db.models.aggregates import Aggregate, Avg, Count, Max, Min, StdDev, Sum, Variance
+from django.db.models.fields import DateField, FieldDoesNotExist
+from django.db.models.functions import Extract
 from rest_framework import renderers
 from rest_framework.utils import encoders
 
-from django.db.models import Case, CharField, Value, When
-from django.db.models.fields import FieldDoesNotExist
-from django.db.models.aggregates import Aggregate, Avg, Count, Max, Min, StdDev, Sum, Variance
-from django.db.models.functions import Extract
-
-from .exceptions import QueryException, AggregateException
 from .aggregates import CountIfFalse, CountIfTrue
+from .exceptions import AggregateException, QueryException
 
 __all__ = ['AggregateRenderer', ]
 
@@ -164,7 +163,7 @@ class AggregateRenderer(renderers.BaseRenderer):
             })
 
         # extract the date part if requested
-        elif model_field.__class__.__name__ in ('DateTimeField', ):
+        elif issubclass(model_field.__class__, DateField) and '__' in field:
             datefield, part = field.split('__')
             if part:
                 qs = qs.annotate(**{
