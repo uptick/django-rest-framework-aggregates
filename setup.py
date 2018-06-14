@@ -6,6 +6,9 @@ from setuptools import setup
 with open('./drf_aggregates/__init__.py') as f:
     exec(re.search(r'VERSION = .*', f.read(), re.DOTALL).group())
 
+with open('README.md') as file:
+    long_description = file.read()
+
 try:
     setup(
         name='drf-aggregates',
