@@ -12,6 +12,8 @@ try:
         packages=['drf_aggregates'],
         version=__version__,
         description='A Python package that exposes the Django model queryset aggregate functions to the DRF API.',
+        long_description=long_description,
+        long_description_content_type='text/markdown',
         license='BSD',
         author='Fiona Lawrence, Jonathan Loo',
         author_email='support@uptickhq.com',
