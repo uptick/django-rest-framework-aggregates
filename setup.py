@@ -6,12 +6,17 @@ from setuptools import setup
 with open('./drf_aggregates/__init__.py') as f:
     exec(re.search(r'VERSION = .*', f.read(), re.DOTALL).group())
 
+with open('README.md') as file:
+    long_description = file.read()
+
 try:
     setup(
         name='drf-aggregates',
         packages=['drf_aggregates'],
         version=__version__,
         description='A Python package that exposes the Django model queryset aggregate functions to the DRF API.',
+        long_description=long_description,
+        long_description_content_type='text/markdown',
         license='BSD',
         author='Fiona Lawrence, Jonathan Loo',
         author_email='support@uptickhq.com',
