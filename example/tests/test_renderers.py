@@ -12,7 +12,7 @@ class AggregatesAPITestCase(BaseTestCase):
 
     def test_default(self):
         results = self.query_agg_api(self.car_api_url)
-        self.assertEqual(len(results), len(self.cars))
+        self.assertEqual(len(results), 0)  # return nothing if there are no arguments
 
     def test_group_by(self):
         results = self.query_agg_api(
@@ -78,5 +78,3 @@ class AggregatesAPITestCase(BaseTestCase):
                 if car.manufacturer.country == row['country']
             ])
             self.assertEqual(count_cars, row['count_id'])
-
-

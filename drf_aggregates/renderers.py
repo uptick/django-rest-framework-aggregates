@@ -133,8 +133,10 @@ class AggregateRenderer(renderers.BaseRenderer):
             if aggs:
                 qs = qs.annotate(**aggs) if query_args.get(_GROUPBY_KEYWORD) else qs.aggregate(**aggs)
 
-        result = list(qs.values(*keys)) if not isinstance(qs, dict) else qs
-        return result
+        if keys:
+            return list(qs.values(*keys)) if not isinstance(qs, dict) else qs
+        else:  # if there are no recognised arguments return nothing
+            return []
 
     def process_group_by(self, qs, field):
         '''
