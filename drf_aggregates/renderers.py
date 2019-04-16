@@ -3,7 +3,7 @@ import json
 from django.db.models import Case, CharField, Value, When
 from django.db.models.aggregates import Aggregate, Avg, Count, Max, Min, StdDev, Sum, Variance
 from django.db.models.fields import DateField, FieldDoesNotExist
-from django.db.models.functions import Extract
+from django.db.models.functions import Extract, TruncDate
 from rest_framework import renderers
 from rest_framework.utils import encoders
 
@@ -167,7 +167,11 @@ class AggregateRenderer(renderers.BaseRenderer):
         # extract the date part if requested
         elif issubclass(model_field.__class__, DateField) and '__' in field:
             datefield, part = field.split('__')
-            if part:
+            if part == 'date':
+                qs = qs.annotate(**{
+                    field_name: TruncDate(datefield)
+                })
+            else:
                 qs = qs.annotate(**{
                     field_name: Extract(datefield, part)
                 })
