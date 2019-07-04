@@ -1,4 +1,5 @@
 import json
+from itertools import chain
 
 from django.db.models import Case, CharField, Value, When
 from django.db.models.aggregates import Aggregate, Avg, Count, Max, Min, StdDev, Sum, Variance
@@ -45,11 +46,9 @@ class AggregateRenderer(renderers.BaseRenderer):
         is keyword[arg]=value. Handles multiple instances of keyword[arg].
         '''
         try:
-            def flatten(nested_list):
-                return [item for sublist in nested_list for item in sublist]
             cleaned_matches = {
-                key[key.index('[') + 1: key.index(']')]: flatten(
-                    [x.split(',') for x in query_params.getlist(key)]
+                key[key.index('[') + 1: key.index(']')]: list(
+                    chain.from_iterable([x.split(',') for x in query_params.getlist(key)])
                 ) for key in query_params.keys() if keyword in key
             }
         except ValueError as e:
