@@ -1,4 +1,5 @@
 import json
+from itertools import chain
 
 from django.db.models import Case, CharField, Value, When
 from django.db.models.aggregates import Aggregate, Avg, Count, Max, Min, StdDev, Sum, Variance
@@ -46,8 +47,9 @@ class AggregateRenderer(renderers.BaseRenderer):
         '''
         try:
             cleaned_matches = {
-                key[key.index('[') + 1: key.index(']')]: query_params.getlist(key)
-                for key in query_params.keys() if keyword in key
+                key[key.index('[') + 1: key.index(']')]: list(
+                    chain.from_iterable([x.split(',') for x in query_params.getlist(key)])
+                ) for key in query_params.keys() if keyword in key
             }
         except ValueError as e:
             raise QueryException(
