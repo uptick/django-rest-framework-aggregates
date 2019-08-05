@@ -29,6 +29,11 @@ Supports choices to representation extract:
 
     endpoint.agg/?group_by[choiceField]&aggregate[Count]=id
 
+Support aggregating over multiple fields, either of
+```
+endpoint.agg/?aggregate[Sum]=id&aggregate[Sum]=number
+endpoint.agg/?aggregate[Sum]=id,number
+```
 ## Custom Aggregations
 
 The default aggregate functions supported are defined in `django.db.models.aggregates`.
