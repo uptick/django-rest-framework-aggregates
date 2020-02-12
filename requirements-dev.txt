@@ -1,5 +1,5 @@
 pytest===3.3.1
-django===1.11.23
+django===1.11.28
 django-filter===1.1.0
 djangorestframework===3.9.1
 pytest-django===3.1.2
