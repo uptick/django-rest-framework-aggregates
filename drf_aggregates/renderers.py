@@ -1,9 +1,11 @@
 import json
 from itertools import chain
 
+from django.core.exceptions import FieldDoesNotExist
 from django.db.models import Case, CharField, Value, When
 from django.db.models.aggregates import Aggregate, Avg, Count, Max, Min, StdDev, Sum, Variance
-from django.db.models.fields import DateField, FieldDoesNotExist
+from django.db.models.fields import DateField
+
 from django.db.models.functions import Extract, TruncDate
 from rest_framework import renderers
 from rest_framework.utils import encoders
