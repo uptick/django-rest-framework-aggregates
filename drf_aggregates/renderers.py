@@ -5,7 +5,7 @@ from django.core.exceptions import FieldDoesNotExist
 from django.db.models import Case, CharField, Value, When
 from django.db.models.aggregates import Aggregate, Avg, Count, Max, Min, StdDev, Sum, Variance
 from django.db.models.fields import DateField
-
+from django.utils.encoding import force_str
 from django.db.models.functions import Extract, TruncDate
 from rest_framework import renderers
 from rest_framework.utils import encoders
@@ -160,7 +160,7 @@ class AggregateRenderer(renderers.BaseRenderer):
         # choices should aslo return the human readable string
         if hasattr(model_field, 'choices') and model_field.choices:
             whens = [
-                When(**{field: value, 'then': Value(value_repr)})
+                When(**{field: value, 'then': Value(force_str(value_repr))})
                 for value, value_repr in model_field.choices
             ]
             field_name = f'{field}_display'
